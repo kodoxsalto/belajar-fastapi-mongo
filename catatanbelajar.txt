@@ -1,0 +1,39 @@
+Projek belajar ini berisi 
+1. folder app -> folder untuk menyimpan semua Projek
+2. folder venv -> berisi file virtual environment python 
+3. requirement.txt -> berisi list package/library yang dibutuhkan dalam projek ini. Usahakan kalau install package lewat 
+    pip install -r requirements.txt biar kecatat.
+
+Penjelasan folder app terdiri dari :
+1.1 folder server -> berisi keperluan server mulai dari database, models, hingga codingan 
+1.2 main.py -> berisi konfigurasi setting menjalankan server uvicorn 
+
+Penjelasan folder server terdiri dari :
+1.1.1 folder models -> berisi models dari database dan api
+1.1.2 app.py -> sama seperti main urls di django. untuk routing url di api
+        Selain itu, di app.py ini bisa di include urls lain menggunakan route.
+        jadi bisa include banyak models. digunakan untuk registrasi models urls
+1.1.3 database.py -> digunakan untuk konfigurasi database (mongodb). 
+        juga digunakan untuk membuat helper semacam deserializer di django digunakan
+        untuk deserialisasi dari json ke dictionary python
+        buat helper sebenernya bisa dibuat di direktori file terpisah dengan database.py 
+        *belajar arrow anotation python
+
+Penjelasan folder models terdiri dari : 
+1.1.1.1 folder routes -> untuk menyimpan router atau url atau endpoint api dari setiap models
+1.1.1.2 student.py -> untuk menyimpan data kedalam database seperti serializer di django. 
+        agar data yang akan dikirim ke database valid.
+
+penjelasan folder routes terdiri dari : 
+1.1.1.1.1 student.py -> berisi coding url atau endpoint sekaligus function yang menghandle nya. seperti views di django
+
+urutan jika ingin membuat models baru dari api
+1. setting main.py (relate nomer 1.2) untuk konfigurasi menjalankan uvicorn
+2. setting app.py (relate nomer 1.1.2) untuk konfigurasi server dan root url
+3. setting database.py (relate nomer 1.1.3) untuk konfigurasi server mongodb
+4. buat models student.py (relate nomer 1.1.1.2) untuk membuat serializer nya ke database mongodb agar data valid / membuat skema 
+5. buat function dan endpoint handler yang menghandel request client pada student.py(1.1.1.1.1) 
+6. buat helper database.py (relate nomer 1.1.3) untuk membantu parsing data dari collection mongodb kedalam dictionary python
+7. register urls endpoint kedalam app.py (relate nomer 1.1.2) untuk menginclude kan models baru
+
+
